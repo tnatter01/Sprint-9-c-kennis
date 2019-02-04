@@ -3,7 +3,54 @@
 namespace C_kennis
 {
     class Program
-    {
+    { 
+        public static void ShowMenu()
+        {
+            //Declaratie van de variabelen
+            string strGekozenMenu;
+            
+            Console.WriteLine("SoundSharp\n");
+            Console.WriteLine("1. Overzicht mp3 spelers");
+            Console.WriteLine("2. ");
+            Console.WriteLine("3. ");
+            Console.WriteLine("4. ");
+            Console.WriteLine("5. ");
+            Console.WriteLine("6. ");
+            Console.WriteLine("7. ");
+            Console.WriteLine("8. ");
+            Console.WriteLine("9. Exit");
+
+            Console.Write("Kies een menu door het getal in te voeren: ");
+            strGekozenMenu = Console.ReadKey().KeyChar.ToString();
+
+            switch (strGekozenMenu)
+            {
+                case "1":
+                    Console.WriteLine("\ngekozen actie: 1. Overzicht mp3 spelers");
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                case "6":
+                    break;
+                case "7":
+                    break;
+                case "8":
+                    break;
+                case "9":
+                    Console.WriteLine("\ngekozen actie: 9. Exit");
+                    break;
+                default:
+                    Console.WriteLine("\nOngeldige keuze");
+                    return;
+                    break;
+            }
+        }
 
         public static void Login()
         {
@@ -66,8 +113,7 @@ namespace C_kennis
                         strInputWachtwoord = Console.ReadLine();
                         if (strInputWachtwoord == strWachtwoord)
                         {
-                            Console.WriteLine("Correct wachtwoord");
-                            Console.WriteLine("U bent ingelogd");
+                            Console.WriteLine("Welkom bij SoundSharp " + strNaam);
                             return;
                             break;
 
@@ -87,6 +133,7 @@ namespace C_kennis
         }
         static void Main(string[] args)
         {
+            ShowMenu();
             Login();
             Console.ReadLine();
         }
