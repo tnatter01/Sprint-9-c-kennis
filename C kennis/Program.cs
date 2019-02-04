@@ -4,17 +4,36 @@ namespace C_kennis
 {
     class Program
     {
-        static void Main(string[] args)
+
+        public static void Login()
         {
             //Declaratie van de variabelen
-            string naam;
+            const string strWachtwoord = "SHARPSOUND";
+            string strNaam;
+            string strInputWachtwoord;
 
             //Naam opvragen
             Console.Write("Geef je naam op: ");
-            naam = Console.ReadLine();
+            strNaam = Console.ReadLine();
 
-            //Resultaat weergeven
-            Console.WriteLine("Welkom bij SoundSharp " + naam);
+            //Wachtwoord opvragen
+            Console.Write("Geef je wachtwoord op: ");
+            strInputWachtwoord = Console.ReadLine();
+
+            //Welkomstbericht weergeven
+            switch (strInputWachtwoord)
+            {
+                case (strWachtwoord):
+                    Console.WriteLine("Welkom bij SoundSharp " + strNaam);
+                    break;
+                default:
+                    Console.WriteLine("Password is onjuist.");
+                    break;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Login();
             Console.ReadLine();
         }
     }
