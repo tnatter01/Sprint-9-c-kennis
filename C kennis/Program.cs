@@ -7,27 +7,31 @@ namespace C_kennis
 
         struct mp3speler
         {
-            public int intID;
-            public string strMake;
-            public string strModel;
-            public int intMBSize;
+            public int intID, intMBSize;
+            public string strMake, strModel;
             public double dblPrice;
         }
 
         public static void nieuwemp3()
         {
-            mp3speler mp3_1;
-            mp3_1.intID = 1;
-            mp3_1.strMake = "GET technologies .inc";
-            mp3_1.strModel = "HF 410";
-            mp3_1.intMBSize = 4096;
-            mp3_1.dblPrice = 129.95;
+            mp3speler[] array =
+                new mp3speler[]
+                {
+                    new mp3speler() {intID = 1, strMake= "GET technologies .inc", strModel = "HF 410", intMBSize = 4096, dblPrice = 129.95},
+                    new mp3speler() {intID = 2, strMake= "Far & Loud", strModel = "XM 600", intMBSize = 8192, dblPrice = 224.95},
+                    new mp3speler() {intID = 3, strMake= "Innotivative", strModel = "Z3", intMBSize = 512, dblPrice = 79.95},
+                    new mp3speler() {intID = 4, strMake= "Resistance S.A.", strModel = "3001", intMBSize = 4096, dblPrice = 124.95},
+                    new mp3speler() {intID = 5, strMake= "CBA", strModel = "NXT volume", intMBSize = 2048, dblPrice = 159.05},
+                };
 
-            Console.WriteLine("\nID: " + mp3_1.intID);
-            Console.WriteLine("Merk: " + mp3_1.strMake);
-            Console.WriteLine("Model: " + mp3_1.strModel);
-            Console.WriteLine("MB Size: " + mp3_1.intMBSize);
-            Console.WriteLine("Price: " + mp3_1.dblPrice);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("\nID = {0}", array[i].intID);
+                Console.WriteLine("Merk = {0}", array[i].strMake);
+                Console.WriteLine("Model = {0}", array[i].strModel);
+                Console.WriteLine("Capaciteit = {0}", array[i].intMBSize);
+                Console.WriteLine("Prijs = {0}", array[i].dblPrice);
+            }
         }
         public static void ShowMenu()
         {
