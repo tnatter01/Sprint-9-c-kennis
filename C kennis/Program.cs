@@ -8,42 +8,42 @@ namespace C_kennis
 
         struct mp3speler
         {
-            public int intID, intMBSize;
+            public int intID, intMBSize, intVoorraad;
             public string strMake, strModel;
             public double dblPrice;
         }
 
         static List<mp3speler> mp3list = new List<mp3speler>
         {
-                    new mp3speler() {intID = 1, strMake= "GET technologies .inc", strModel = "HF 410", intMBSize = 4096, dblPrice = 129.95},
-                    new mp3speler() {intID = 2, strMake= "Far & Loud", strModel = "XM 600", intMBSize = 8192, dblPrice = 224.95},
-                    new mp3speler() {intID = 3, strMake= "Innotivative", strModel = "Z3", intMBSize = 512, dblPrice = 79.95},
-                    new mp3speler() {intID = 4, strMake= "Resistance S.A.", strModel = "3001", intMBSize = 4096, dblPrice = 124.95},
-                    new mp3speler() {intID = 5, strMake= "CBA", strModel = "NXT volume", intMBSize = 2048, dblPrice = 159.05},
+                    new mp3speler() {intID = 1, strMake= "GET technologies .inc", strModel = "HF 410", intMBSize = 4096, dblPrice = 129.95, intVoorraad =  500},
+                    new mp3speler() {intID = 2, strMake= "Far & Loud", strModel = "XM 600", intMBSize = 8192, dblPrice = 224.95, intVoorraad =  500},
+                    new mp3speler() {intID = 3, strMake= "Innotivative", strModel = "Z3", intMBSize = 512, dblPrice = 79.95, intVoorraad =  500},
+                    new mp3speler() {intID = 4, strMake= "Resistance S.A.", strModel = "3001", intMBSize = 4096, dblPrice = 124.95, intVoorraad =  500},
+                    new mp3speler() {intID = 5, strMake= "CBA", strModel = "NXT volume", intMBSize = 2048, dblPrice = 159.05, intVoorraad =  500},
         };
         public static void nieuwemp3()
         {
-            
-
-            mp3speler[] array =
-                new mp3speler[]
-                {
-                    new mp3speler() {intID = 1, strMake= "GET technologies .inc", strModel = "HF 410", intMBSize = 4096, dblPrice = 129.95},
-                    new mp3speler() {intID = 2, strMake= "Far & Loud", strModel = "XM 600", intMBSize = 8192, dblPrice = 224.95},
-                    new mp3speler() {intID = 3, strMake= "Innotivative", strModel = "Z3", intMBSize = 512, dblPrice = 79.95},
-                    new mp3speler() {intID = 4, strMake= "Resistance S.A.", strModel = "3001", intMBSize = 4096, dblPrice = 124.95},
-                    new mp3speler() {intID = 5, strMake= "CBA", strModel = "NXT volume", intMBSize = 2048, dblPrice = 159.05},
-                };
-
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < mp3list.Count; i++)
             {
-                Console.WriteLine("\nID = {0}", array[i].intID);
-                Console.WriteLine("Merk = {0}", array[i].strMake);
-                Console.WriteLine("Model = {0}", array[i].strModel);
-                Console.WriteLine("Capaciteit = {0}", array[i].intMBSize);
-                Console.WriteLine("Prijs = {0}", array[i].dblPrice);
+                Console.WriteLine("\nID = {0}", mp3list[i].intID);
+                Console.WriteLine("Merk = {0}", mp3list[i].strMake);
+                Console.WriteLine("Model = {0}", mp3list[i].strModel);
+                Console.WriteLine("Capaciteit = {0}", mp3list[i].intMBSize);
+                Console.WriteLine("Prijs = {0}", mp3list[i].dblPrice);
             }
         }
+
+        public static void showVoorraad()
+        {
+            for (int i = 0; i < mp3list.Count; i++)
+            {
+                Console.Write("\nID: " + mp3list[i].intID);
+                Console.Write("\nVoorraad: " + mp3list[i].intVoorraad + " stuks\n");
+            }
+            Console.WriteLine("Druk op 8 om terug te keren naar het menu.");
+            ConsoleKeyInfo key = Console.ReadKey();
+            if (key.Key == ConsoleKey.D8) { ShowMenu(); }
+    }
         public static void ShowMenu()
         {
             //Declaratie van de variabelen
@@ -51,13 +51,13 @@ namespace C_kennis
             
             Console.WriteLine("SoundSharp\n");
             Console.WriteLine("1. Overzicht mp3 spelers");
-            Console.WriteLine("2. ");
+            Console.WriteLine("2. Overzicht voorraad");
             Console.WriteLine("3. ");
             Console.WriteLine("4. ");
             Console.WriteLine("5. ");
             Console.WriteLine("6. ");
             Console.WriteLine("7. ");
-            Console.WriteLine("8. ");
+            Console.WriteLine("8. Toon menu");
             Console.WriteLine("9. Exit");
 
             Console.WriteLine("Kies een menu door het getal in te voeren: ");
@@ -69,6 +69,7 @@ namespace C_kennis
                     nieuwemp3();
                     break;
                 case "2":
+                    showVoorraad();
                     break;
                 case "3":
                     break;
