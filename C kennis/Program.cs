@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace C_kennis
 {
@@ -12,8 +13,18 @@ namespace C_kennis
             public double dblPrice;
         }
 
+        static List<mp3speler> mp3list = new List<mp3speler>
+        {
+                    new mp3speler() {intID = 1, strMake= "GET technologies .inc", strModel = "HF 410", intMBSize = 4096, dblPrice = 129.95},
+                    new mp3speler() {intID = 2, strMake= "Far & Loud", strModel = "XM 600", intMBSize = 8192, dblPrice = 224.95},
+                    new mp3speler() {intID = 3, strMake= "Innotivative", strModel = "Z3", intMBSize = 512, dblPrice = 79.95},
+                    new mp3speler() {intID = 4, strMake= "Resistance S.A.", strModel = "3001", intMBSize = 4096, dblPrice = 124.95},
+                    new mp3speler() {intID = 5, strMake= "CBA", strModel = "NXT volume", intMBSize = 2048, dblPrice = 159.05},
+        };
         public static void nieuwemp3()
         {
+            
+
             mp3speler[] array =
                 new mp3speler[]
                 {
