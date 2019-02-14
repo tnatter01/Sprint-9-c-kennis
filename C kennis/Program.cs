@@ -3,17 +3,16 @@ using System.Collections.Generic;
 
 namespace C_kennis
 {
-    class Program
-    { 
-
-        struct mp3speler
+    internal class Program
+    {
+        private struct mp3speler
         {
             public int intID, intMBSize, intVoorraad;
             public string strMake, strModel;
             public double dblPrice;
         }
 
-        static List<mp3speler> mp3list = new List<mp3speler>
+        private static List<mp3speler> mp3list = new List<mp3speler>
         {
                     new mp3speler() {intID = 1, strMake= "GET technologies .inc", strModel = "HF 410", intMBSize = 4096, dblPrice = 129.95, intVoorraad =  500},
                     new mp3speler() {intID = 2, strMake= "Far & Loud", strModel = "XM 600", intMBSize = 8192, dblPrice = 224.95, intVoorraad =  500},
@@ -31,6 +30,9 @@ namespace C_kennis
                 Console.WriteLine("Capaciteit = {0}", mp3list[i].intMBSize);
                 Console.WriteLine("Prijs = {0}", mp3list[i].dblPrice);
             }
+            Console.WriteLine("Druk op 8 om terug te keren naar het menu.");
+            ConsoleKeyInfo key = Console.ReadKey();
+            if (key.Key == ConsoleKey.D8) { ShowMenu(); }
         }
 
         public static void showVoorraad()
@@ -43,16 +45,65 @@ namespace C_kennis
             Console.WriteLine("Druk op 8 om terug te keren naar het menu.");
             ConsoleKeyInfo key = Console.ReadKey();
             if (key.Key == ConsoleKey.D8) { ShowMenu(); }
-    }
+        }
+        public static void muteerVoorraad()
+        {
+            int intMuteerID, intMutatie;
+            string strPlusMin;
+            Console.Write("Geef het ID op: ");
+            intMuteerID = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < mp3list.Count; i++)
+            {
+                if (mp3list[i].intID == intMuteerID)
+                {
+                    Console.Write("\nID: " + mp3list[i].intID);
+                    Console.Write("\nVoorraad: " + mp3list[i].intVoorraad + " stuks\n");
+                    Console.Write("Geef de mutatie op: ");
+                    intMutatie = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("+/- ");
+                    strPlusMin = Convert.ToString(Console.ReadLine());
+                    if (intMutatie >= mp3list[i].intVoorraad)
+                    {
+                        Console.WriteLine("Mutatie niet uitgevoerd: voorraad mag niet negatief worden.");
+                        break;
+                    }
+                    mp3speler newmp3 = new mp3speler();
+                    newmp3.intID = mp3list[i].intID;
+                    newmp3.strMake = mp3list[i].strMake;
+                    newmp3.strModel = mp3list[i].strModel;
+                    newmp3.intMBSize = mp3list[i].intMBSize;
+                    newmp3.dblPrice = mp3list[i].dblPrice;
+
+                    switch (strPlusMin)
+                    {
+                        case ("+"):
+                            newmp3.intVoorraad = mp3list[i].intVoorraad + intMutatie;
+                            mp3list[i] = newmp3;
+                            Console.WriteLine("Nieuwe voorraad: " + mp3list[i].intVoorraad);
+                            break;
+                        case ("-"):
+                            newmp3.intVoorraad = mp3list[i].intVoorraad - intMutatie;
+                            mp3list[i] = newmp3;
+                            Console.WriteLine("Nieuwe voorraad: " + mp3list[i].intVoorraad);
+                            break;
+                    }
+                    Console.WriteLine("Druk op 8 om terug te keren naar het menu.");
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    if (key.Key == ConsoleKey.D8) { ShowMenu(); }
+                }
+            }
+        }
+
         public static void ShowMenu()
         {
             //Declaratie van de variabelen
             string strGekozenMenu;
-            
+
             Console.WriteLine("SoundSharp\n");
             Console.WriteLine("1. Overzicht mp3 spelers");
             Console.WriteLine("2. Overzicht voorraad");
-            Console.WriteLine("3. ");
+            Console.WriteLine("3. Muteer voorraad");
             Console.WriteLine("4. ");
             Console.WriteLine("5. ");
             Console.WriteLine("6. ");
@@ -72,6 +123,7 @@ namespace C_kennis
                     showVoorraad();
                     break;
                 case "3":
+                    muteerVoorraad();
                     break;
                 case "4":
                     break;
@@ -176,7 +228,8 @@ namespace C_kennis
 
             while (intPoging < 4);
         }
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
             Login();
             Console.ReadLine();
